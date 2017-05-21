@@ -60,6 +60,7 @@ function __fisherlazy_create_function
             end
             source $path
         end
+        functions -e '$cmd'
         eval '$cmd' $argv
     end'
 end
