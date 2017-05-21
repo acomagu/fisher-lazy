@@ -21,7 +21,7 @@ function fisher-lazy
         end
 
         for file in (ls $fisher_config/$name/$base)
-            if test (readlink -f $fish_config/functions/$file) != $fisher_config/$name/functions/$file
+            if test (readlink -f $fish_config/$base/$file) != $fisher_config/$name/$base/$file
                 continue
             end
             rm $fish_config/$base/$file
