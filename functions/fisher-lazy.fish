@@ -40,7 +40,7 @@ function fisher-lazy
         set argv $argv $name
     end
     for cmd in $argv
-        __fisher_lazy_create_function $cmd $name > $fish_config/functions/$cmd
+        __fisher_lazy_create_function $cmd $name > $fish_config/functions/$cmd.fish
     end
 end
 
