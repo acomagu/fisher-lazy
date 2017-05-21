@@ -13,6 +13,10 @@ function fisher-lazy
         set -g fisher_config "$config_home/fisherman"
     end
 
+    if not count $argv > /dev/null
+        __fisherlazy_help
+    end
+
     set name $argv[1]
     set bases functions conf.d completions
     for base in $bases
@@ -28,15 +32,15 @@ function fisher-lazy
         end
     end
 
-    if test ! -e $argv[2]
+    if test (count $argv) = '1'
         set argv $argv $name
     end
     for cmd in $argv
-        __fisher_lazy_create_function $cmd $name > $fish_config/functions/$cmd.fish
+        __fisherlazy_create_function $cmd $name > $fish_config/functions/$cmd.fish
     end
 end
 
-function __fisher_lazy_create_function
+function __fisherlazy_create_function
     set cmd $argv[1]
     set name $argv[2]
     echo 'function '$cmd'
