@@ -13,14 +13,6 @@ function fisher-lazy
         set -g fisher_config "$config_home/fisherman"
     end
 
-    if test -z "$fish_path"
-        set -g fish_path "$fish_config"
-    end
-
-    if test -z "$fisher_file"
-        set -g fisher_file "$fish_path/fishfile"
-    end
-
     set name $argv[1]
     set bases functions conf.d completions
     for base in $bases
