@@ -20,7 +20,7 @@ function fisher-lazy
             continue
         end
 
-        for file in (ls $fisher_config/$name/$base/*.fish)
+        for file in (ls $fisher_config/$name/$base/ | grep '.fish$')
             if test (readlink -f $fish_config/$base/$file) != $fisher_config/$name/$base/$file
                 continue
             end
