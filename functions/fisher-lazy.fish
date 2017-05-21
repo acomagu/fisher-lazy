@@ -40,6 +40,16 @@ function __fisher_lazy_create_function
     set cmd $argv[1]
     set name $argv[2]
     echo 'function '$cmd'
+        set -l config_home $XDG_CONFIG_HOME
+
+        if test -z "$config_home"
+            set config_home ~/.config
+        end
+
+        if test -z "$fisher_config"
+            set -g fisher_config "$config_home/fisherman"
+        end
+
         source $fisher_config/'$name'/{functions,conf.d,completions}/*.fish
         eval '$cmd' $argv
     end'
