@@ -51,7 +51,7 @@ function __fisher_lazy_create_function
         end
 
         for path in $fisher_config/'$name'/{functions,conf.d,completions}/*.fish
-            if string match -r \'^uninstall.fish$\' $path
+            if string match -r \'^uninstall\\.fish$\' $path > /dev/null
                 continue
             end
             source $path
