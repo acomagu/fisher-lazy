@@ -50,7 +50,9 @@ function __fisher_lazy_create_function
             set -g fisher_config "$config_home/fisherman"
         end
 
-        source $fisher_config/'$name'/{functions,conf.d,completions}/*.fish
+        for path in $fisher_config/'$name'/{functions,conf.d,completions}/*.fish
+            source $path
+        end
         eval '$cmd' $argv
     end'
 end
