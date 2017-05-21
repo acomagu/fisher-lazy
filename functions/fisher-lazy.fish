@@ -54,13 +54,14 @@ function __fisherlazy_create_function
             set -g fisher_config "$config_home/fisherman"
         end
 
+        functions -e '$cmd'
+
         for path in $fisher_config/'$name'/{functions,conf.d,completions}/*.fish
             if string match -r \'/uninstall\\.fish$\' $path > /dev/null
                 continue
             end
             source $path
         end
-        functions -e '$cmd'
         eval '$cmd' $argv
     end'
 end
