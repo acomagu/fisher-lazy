@@ -15,6 +15,7 @@ function fisher-lazy
 
     if not count $argv > /dev/null
         __fisherlazy_help
+        return 1
     end
 
     set name $argv[1]
@@ -64,4 +65,8 @@ function __fisherlazy_create_function
         end
         eval '$cmd' $argv
     end'
+end
+
+function __fisherlazy_help
+    echo 'fisher-lazy <package name> [<commands...>]'
 end
